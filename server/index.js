@@ -8,11 +8,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
-app.get('/css', (req, res) => {
+app.get('/stylesheet.css', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/stylesheet.css'));
 })
 
-app.use('/css', express.static(path.join(__dirname, '../public/stylesheet.css')));
+// app.use('/css', express.static(path.join(__dirname, '../public/stylesheet.css')));
 
 const port = process.env.PORT || 4004;
 
