@@ -12,6 +12,10 @@ app.get('/stylesheet.css', (req, res) => {
     res.sendFile(path.join(__dirname, '../public/stylesheet.css'));
 })
 
+app.get("/app.js", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/app.js"))
+})
+
 // app.use('/css', express.static(path.join(__dirname, '../public/stylesheet.css')));
 
 const port = process.env.PORT || 4004;
