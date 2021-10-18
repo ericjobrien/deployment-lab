@@ -1,0 +1,29 @@
+Deployment Instructions – deploying to Heroku – reference deployment lab and f9-deployment-demo at git hub
+1.	Create project files – including a limited index.html file and a server folder with an index.js file
+2.	Build out a basic html file with just a h1 tag that says something like “Hello World”
+3.	Build out the server file in index.js
+a.	Start by initializing package.json – npm init -y
+b.	Load express into the root directory of the project npm i express
+c.	Code out your server – const express = require(‘express’);
+d.	Code out path – const path = require(‘path’); - need this library so that Heroku can change the pathway since it doesn’t have access to our local directories
+e.	Create const app = express();
+f.	Create const port = process.env.PORT || 4004; - 4004 is generic port – you can choose whatever one you want
+g.	Code out app.listen(port, () => {console.log(`Server is up on ${port}`);})
+h.	Under const app = express(); - code a GET call – app.get(‘/’, (req, res) => { res.sendFile(path.join(__dirname, “../index.html”));  - I’m not 100% on this but I believe this sets up a portal to the front end so we can grab what is in the index.html file
+4.	Create a Heroku file in the root directory
+a.	Code web:npm start – tells Heroku to fire up npm start when they access the project
+5.	Adjust package.json
+a.	“main”: needs to be set to the pathway to your server – for example “server/index.js”
+b.	“scripts: create a new property and value - “start”: “node server/index.js”
+6.	Create git repository, both locally and at Github
+a.	Once fully set up – push everything to github
+b.	Don’t forget to create a .gitignore file at your root directory for your node_modules
+7.	Go to Heroku to set up new app and link to Github account – Heroku pulls from Github, not our local directory
+a.	Click create new app
+b.	Connect Github repository
+c.	Click enable automatic deploys
+d.	Click deploy branch – wait while the system creates the app
+i.	Should get all green check marks, otherwise something is off with your setup
+e.	Click view
+i.	Should be able to see your app
+8.	In case you need to delete your repository in Github and then create a new one, use git remote set-url origin newrepourl – this will push your work into the new repo on Github
